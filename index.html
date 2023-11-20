@@ -5,30 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+
   <title>Frontend Mentor | IP Address Tracker</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
 
-  IP Address Tracker
+  <header>
+    <h1>IP Address Tracker</h1>
+    <form>
+      <label for="ipAddress"></label><br>
+      <input type="text" id="ipAddress" name="ipAdress" placeholder="Search for any IP address or domain"><br>
+    </form>
+  </header>
+  <main>
+    <section id="values">
+      <div>
+        <p>IP Address</p>
+        <h2></h2>
+      </div>
+      <div>
+        <p>Location</p>
+        <h2></h2>
+      </div>
+      <div>
+        <p>Timezone</p>
+        <h2></h2>
+      </div>
+      <div>
+        <p>ISP</p>
+        <h2></h2>
+      </div>
+    </section>
+    <section id="map"></section>
+  </main>
 
-  Search for any IP address or domain
-
-  IP Address
-  Location
-  Timezone
-    UTC <!-- add offset value dynamically using the API -->
-  ISP
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Lukas Jerusalem</a>.
+  </footer>
 </body>
 </html>
