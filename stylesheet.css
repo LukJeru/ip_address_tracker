@@ -66,7 +66,7 @@ header h1 {
   background-color: white;
   border-radius: 1rem;
   margin: 0 auto;
-  z-index: 1;
+  z-index: 500;
 }
 
 .grid_item {
@@ -97,8 +97,10 @@ footer{
   margin: 0 auto;
   position: fixed;
   color: var(--darkGrey);
+  font-size: .8rem;
   bottom: .5rem;
-  right: .5rem;
+  left: .5rem;
+  z-index: 500;
 }
 
 footer a{
@@ -107,7 +109,7 @@ footer a{
 
 #map {
   height: 33rem;
-  z-index: .5;
+  z-index: 0.5;
   position: relative;
   bottom: 11rem;
 }
