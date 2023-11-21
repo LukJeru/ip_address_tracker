@@ -17,7 +17,7 @@ header{
   padding: 0;
   position: relative;
   bottom: 2rem;
-  height: 16rem;
+  height: 17rem;
   text-align: center;
   color: white;
 }
@@ -27,7 +27,7 @@ header h1 {
 }
 
 #inputForm {
-  margin: 2rem auto;
+  margin: 1rem auto;
   height: 3rem;
   display:inline-flex;
 }
@@ -53,4 +53,41 @@ header h1 {
   background-repeat: no-repeat;
   background-color: var(--veryDarkGray);
   color: white;
+}
+
+#values{
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  position: relative;
+  bottom: 6rem;
+  width: 70%;
+  padding: 1.5rem;
+  border:none;
+  background-color: white;
+  border-radius: 1rem;
+  margin: 0 auto;
+}
+
+.grid_item {
+  margin: .5rem;
+  border-right: 1px solid var(--darkGrey);
+  height: 5rem;
+  padding-left: 1rem;
+}
+
+.grid_item p{
+  color: var(--darkGrey);
+  position: relative;
+  bottom: 1.5rem;
+}
+
+.grid_item h2{
+  color: var(--veryDarkGray);
+  font-weight: 500;
+  position: relative;
+  bottom: 2.5rem;
+}
+
+#last_grid_item{
+  border-right: none;
 }
