@@ -91,3 +91,15 @@ header h1 {
 #last_grid_item{
   border-right: none;
 }
+
+footer{
+  margin: 0 auto;
+  position: fixed;
+  color: var(--darkGrey);
+  bottom: .5rem;
+  right: .5rem;
+}
+
+footer a{
+  color: var(--veryDarkGray);
+}
