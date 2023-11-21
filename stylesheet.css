@@ -1,7 +1,9 @@
 body {
-  width:100%;
+  width: 100%;
+  margin: 0 auto;
   font-size: 18px;
   font-family: "Rubik";
+  position: fixed;
 }
 
 :root{
@@ -11,11 +13,10 @@ body {
 
 header{
   background-image: url(images/pattern-bg-desktop.png);
-  margin: 0 auto;
+  margin: auto;
   padding: 0;
   position: relative;
   bottom: 2rem;
-  width: 100%;
   height: 16rem;
   text-align: center;
   color: white;
