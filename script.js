@@ -7,30 +7,28 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const submitButton = document.getElementById("submitIP");
 
 
-const apiKey = '';
-const url = `https://api.ipify.org/?format=json&apiKey=${apiKey}`;
+const apiKey = ""
+const url = "";
+const responseIP = document.getElementById("placeholderIP");
+const responseAddress = document.getElementById("placeholderAddress");
+const responseTime = document.getElementById("placeholderTime");
+const responseISP = document.getElementById("placeholderISP");
 
 async function fetchIP() {
   alert("function fetchIP was called")
   const response = await fetch(url);
   const json = await response.json();
   console.log(json);
+  responseIP.innerHTML = json.ip;
+  responseAddress.innerHTML = "Lurk";
+  responseTime.innerHTML = "4 o'clock";
+  responseISP.innerHTML = "Google";
 }
-
-
-const responseIP = document.getElementById("placeholderIP");
-const responseAddress = document.getElementById("placeholderAddress");
-const responseTime = document.getElementById("placeholderTime");
-const responseISP = document.getElementById("placeholderISP");
 
 function showIP() {
   const inputIP = document.getElementById("ipAddress").value;
   if(inputIP !== "") {
     fetchIP();
-    responseIP.innerHTML = "What?";
-    responseAddress.innerHTML = "Lurk";
-    responseTime.innerHTML = "4 o'clock";
-    responseISP.innerHTML = "Google";
   } else {
     alert("Please enter a valid IP address")
   }
