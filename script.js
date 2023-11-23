@@ -18,10 +18,19 @@ async function fetchIP() {
 }
 
 
+const responseIP = document.getElementById("placeholderIP");
+const responseAddress = document.getElementById("placeholderAddress");
+const responseTime = document.getElementById("placeholderTime");
+const responseISP = document.getElementById("placeholderISP");
+
 function showIP() {
   const inputIP = document.getElementById("ipAddress").value;
   if(inputIP !== "") {
     fetchIP();
+    responseIP.innerHTML = "What?";
+    responseAddress.innerHTML = "Lurk";
+    responseTime.innerHTML = "4 o'clock";
+    responseISP.innerHTML = "Google";
   } else {
     alert("Please enter a valid IP address")
   }

@@ -22,26 +22,26 @@
     <h1>IP Address Tracker</h1>
     <form id="inputForm">
         <input type="text" id="ipAddress" name="ipAdress" placeholder="Search for any IP address or domain" value="">
-        <input type="submit" id="submitIP" name="submitIP" value="">
+        <input type="button" id="submitIP" name="submitIP" value="">
     </form>
   </header>
   <main>
     <section id="values">
       <div class="grid_item">
         <p>IP Address</p>
-        <h2>IP Adresse</h2>
+        <h2 id="placeholderIP">IP Adresse</h2>
       </div>
       <div class="grid_item">
         <p>Location</p>
-        <h2>Brooklyn, NY 10001</h2>
+        <h2 id="placeholderAddress">Brooklyn, NY 10001</h2>
       </div>
       <div class="grid_item">
         <p>Timezone</p>
-        <h2>UTC -05:00</h2>
+        <h2 id="placeholderTime">UTC -05:00</h2>
       </div>
       <div class="grid_item" id="last_grid_item">
         <p>ISP</p>
-        <h2>Space X<br> Starlink</h2>
+        <h2 id="placeholderISP">Space X<br> Starlink</h2>
       </div>
     </section>
     <div id="map"></div>
