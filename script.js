@@ -15,13 +15,13 @@ const responseISP = document.getElementById("placeholderISP");
 
 async function fetchIP() {
   alert("function fetchIP was called");
-  const url = `http://ip-api.com/json/${inputIP}`;
+  const url = `http://ip-api.com/json/${inputIP}?fields=status,message,city,zip,lat,lon,offset,isp,query`;
   const response = await fetch(url);
   const json = await response.json();
   console.log(json);
   responseIP.innerHTML = json.query;
   responseAddress.innerHTML = `${json.city}, ${json.zip}`;
-  responseTime.innerHTML = json.timezone;
+  responseTime.innerHTML = timezoneCalculator(json.offset);
   responseISP.innerHTML = json.isp;
   map.setView([json.lat, json.lon], 13);
   marker = L.marker([json.lat, json.lon]).addTo(map);
@@ -43,7 +43,7 @@ function showIP() {
 submitButton.addEventListener("click", showIP);
 
 const ipPattern = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-const websitePattern = /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/g;
+const websitePattern = /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/;
 
 function validateIPaddress(ipaddress) {
   if (ipPattern.test(ipaddress) || websitePattern.test(ipaddress)) {
@@ -51,4 +51,15 @@ function validateIPaddress(ipaddress) {
   }
   alert("You have entered an invalid IP address!")
   return (false)
+}
+
+function timezoneCalculator(timeOffset) {
+  let UTCZone;
+  if (timeOffset < 0) {
+    UTCZone = `UTC -0${(timeOffset/3600).toString().substring(1)}:00`;
+
+  } else {
+    UTCZone = `UTC 0${(timeOffset/3600) }:00`
+  }
+  return UTCZone;
 }
