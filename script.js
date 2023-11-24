@@ -6,27 +6,26 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const submitButton = document.getElementById("submitIP");
 
-
-const apiKey = ""
-const url = "";
+let inputIP = "";
 const responseIP = document.getElementById("placeholderIP");
 const responseAddress = document.getElementById("placeholderAddress");
 const responseTime = document.getElementById("placeholderTime");
 const responseISP = document.getElementById("placeholderISP");
 
 async function fetchIP() {
-  alert("function fetchIP was called")
+  alert("function fetchIP was called");
+  const url = `http://ip-api.com/json/${inputIP}`;
   const response = await fetch(url);
   const json = await response.json();
   console.log(json);
-  responseIP.innerHTML = json.ip;
-  responseAddress.innerHTML = "Lurk";
-  responseTime.innerHTML = "4 o'clock";
-  responseISP.innerHTML = "Google";
+  responseIP.innerHTML = json.query;
+  responseAddress.innerHTML = `${json.city}, ${json.zip}`;
+  responseTime.innerHTML = json.timezone;
+  responseISP.innerHTML = json.isp;
 }
 
 function showIP() {
-  const inputIP = document.getElementById("ipAddress").value;
+  inputIP = document.getElementById("ipAddress").value;
   if(inputIP !== "") {
     fetchIP();
   } else {
