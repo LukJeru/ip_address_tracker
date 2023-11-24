@@ -6,6 +6,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 const submitButton = document.getElementById("submitIP");
 
+let marker;
 let inputIP = "";
 const responseIP = document.getElementById("placeholderIP");
 const responseAddress = document.getElementById("placeholderAddress");
@@ -22,11 +23,16 @@ async function fetchIP() {
   responseAddress.innerHTML = `${json.city}, ${json.zip}`;
   responseTime.innerHTML = json.timezone;
   responseISP.innerHTML = json.isp;
+  map.setView([json.lat, json.lon], 13);
+  marker = L.marker([json.lat, json.lon]).addTo(map);
 }
 
 function showIP() {
   inputIP = document.getElementById("ipAddress").value;
   if(inputIP !== "") {
+    if (marker !== undefined) {
+      map.removeLayer(marker);
+    };
     fetchIP();
   } else {
     alert("Please enter a valid IP address")
