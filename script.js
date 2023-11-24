@@ -33,6 +33,7 @@ function showIP() {
     if (marker !== undefined) {
       map.removeLayer(marker);
     };
+    validateIPaddress(inputIP);
     fetchIP();
   } else {
     alert("Please enter a valid IP address")
@@ -40,3 +41,14 @@ function showIP() {
  }
 
 submitButton.addEventListener("click", showIP);
+
+const ipPattern = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+const websitePattern = /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/g;
+
+function validateIPaddress(ipaddress) {
+  if (ipPattern.test(ipaddress) || websitePattern.test(ipaddress)) {
+    return (true)
+  }
+  alert("You have entered an invalid IP address!")
+  return (false)
+}
