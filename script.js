@@ -5,42 +5,42 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 const submitButton = document.getElementById("submitIP");
+submitButton.addEventListener("click", showIP);
 
 let marker;
 let inputIP = "";
+let data;
 const responseIP = document.getElementById("placeholderIP");
 const responseAddress = document.getElementById("placeholderAddress");
 const responseTime = document.getElementById("placeholderTime");
 const responseISP = document.getElementById("placeholderISP");
 
 async function fetchIP() {
-  alert("function fetchIP was called");
   const url = `http://ip-api.com/json/${inputIP}?fields=status,message,city,zip,lat,lon,offset,isp,query`;
   const response = await fetch(url);
   const json = await response.json();
   console.log(json);
-  responseIP.innerHTML = json.query;
-  responseAddress.innerHTML = `${json.city}, ${json.zip}`;
-  responseTime.innerHTML = timezoneCalculator(json.offset);
-  responseISP.innerHTML = json.isp;
-  map.setView([json.lat, json.lon], 13);
-  marker = L.marker([json.lat, json.lon]).addTo(map);
+  return json;
 }
 
-function showIP() {
+async function showIP() {
   inputIP = document.getElementById("ipAddress").value;
   if(inputIP !== "") {
     if (marker !== undefined) {
       map.removeLayer(marker);
     };
     validateIPaddress(inputIP);
-    fetchIP();
+    const data = await fetchIP();
+    responseIP.innerHTML = data.query;
+    responseAddress.innerHTML = `${data.city}, ${data.zip}`;
+    responseTime.innerHTML = timezoneCalculator(data.offset);
+    responseISP.innerHTML = data.isp;
+    map.setView([data.lat, data.lon], 13);
+    marker = L.marker([data.lat, data.lon]).addTo(map);
   } else {
     alert("Please enter a valid IP address")
   }
  }
-
-submitButton.addEventListener("click", showIP);
 
 const ipPattern = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
 const websitePattern = /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?\/[a-zA-Z0-9]{2,}|((https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z]{2,}(\.[a-zA-Z]{2,})(\.[a-zA-Z]{2,})?)|(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)?[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}(\.[a-zA-Z0-9]{2,})?/;
