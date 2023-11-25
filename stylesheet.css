@@ -1,5 +1,6 @@
 body {
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   font-size: 18px;
   font-family: "Rubik";
@@ -112,4 +113,111 @@ footer a{
   z-index: 0.5;
   position: relative;
   bottom: 11rem;
+}
+
+@media screen and (max-width: 600px) {
+  #values{
+    display: flex;
+    flex-direction: column;
+    height: 12rem;
+    width: 68%;
+    justify-content: center;
+    position: relative;
+    bottom: 9.5rem;
+  }
+
+  .grid_item {
+    border: none;
+    text-align: center;
+  }
+
+  #first_grid_item{
+    position: relative;
+    top: 6rem;
+  }
+
+  #second_grid_item{
+    position: relative;
+    top: 3rem;
+  }
+
+  #third_grid_item{
+    position: relative;
+    top: .5rem;
+  }
+
+  #last_grid_item{
+    position: relative;
+    bottom: 2.5rem;
+  }
+
+  .grid_item p{
+    color: var(--darkGrey);
+    font-size: .6rem;
+  }
+
+  .grid_item h2{
+    font-size: 1rem;
+    margin-top: 0rem;
+  }
+
+  #inputForm{
+    width: 79%;
+    height: 2.5rem;
+  }
+
+  #ipAddress{
+    border: none;
+    height: 2.5rem;
+    border-top-left-radius: .8rem;
+    border-bottom-left-radius: .8rem;
+    width: 30rem;
+    padding-left: 1rem;
+  }
+
+
+  #submitIP{
+    height: 2.5rem;
+  }
+
+
+  #map{
+    height: 34rem;
+    position: relative;
+    bottom: 20.5rem;
+  }
+
+  h1{
+    font-size: 1.4rem;
+    font-weight: 500;
+    position: relative;
+    top: .8rem;
+  }
+
+  footer{
+    font-size: .7rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .grid_item p{
+    color: var(--darkGrey);
+    font-size: 1rem;
+  }
+
+  .grid_item h2{
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .grid_item p{
+    color: var(--darkGrey);
+    font-size: .8rem;
+  }
+
+  .grid_item h2{
+    font-size: 1rem;
+  }
 }
